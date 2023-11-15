@@ -1,0 +1,20 @@
+version: '3.6'
+
+services:
+  helloi_db:
+    build:
+      context: .
+      dockerfile: Dockerfile-db
+    restart: always
+    volumes:
+      - helloi_database_volume:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: "helloi"
+      POSTGRES_PASSWORD: "helloi12345"
+      POSTGRES_DB: "helloi"
+      LANG: C.UTF-8
+    ports:
+      - 5432:5432
+
+volumes:
+  helloi_database_volume:
